@@ -1,0 +1,33 @@
+body {
+	background-image: url("../img/wow-bg.jpg");
+	width: 100%;
+	height: 900px;
+	background-repeat: no-repeat;
+	background-color: black;
+}
+
+.wrapper {
+	height: 500px;
+	width: 700px;
+	border-radius: 10%;
+	border: solid 5px white;
+	margin-top: 160px;
+	margin-left: 275px;
+	background-color: rgba(192,192,192,0.4);
+}
+
+.wrapper > p {
+	text-align: center;
+	font-size: 24px;
+	font-family: sans-serif;
+}
+
+.answers {
+	margin-left: 100px;
+}
+
+li{
+	list-style: none;
+	margin-bottom: 5px;
+}
+
