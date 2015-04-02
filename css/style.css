@@ -6,28 +6,39 @@ body {
 	background-color: black;
 }
 
-.wrapper {
-	height: 500px;
+#wrapper {
+	height: 300px;
 	width: 700px;
 	border-radius: 10%;
 	border: solid 5px white;
-	margin-top: 160px;
+	margin-top: 260px;
 	margin-left: 275px;
 	background-color: rgba(192,192,192,0.4);
 }
 
-.wrapper > p {
+#question-wrapper {
 	text-align: center;
 	font-size: 24px;
 	font-family: sans-serif;
 }
 
-.answers {
+#answer-wrapper {
 	margin-left: 100px;
 }
 
 li{
 	list-style: none;
 	margin-bottom: 5px;
+}
+
+#button-wrapper {
+	margin-left: 150px;
+	margin-top: 50px;
+}
+
+#submit, #retry {
+	background-color: white;
+	font-size: 16px;
+	border-radius: 10px;
 }
 
