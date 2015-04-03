@@ -29,22 +29,23 @@ $(document).ready(function() {
 		questionNumber: 4,
 		correctAnswer: 3
 	}]
-})
+}
 
+//Time for some global variables
 var numberCorrect = 0;		//initialize counter for corect answers to 0
 var currentQuestion = 0;	//initialize counter for question # to 0
+var newQuestion = '<span class="question">' + questions[currentQuestion].question + '</span><br><div id="answer-wrapper"><input type="radio" name="option" class="option" value="0"><span class="answer">' + questions[currentQuestion].answers[0] + '</span><br><input type="radio" name="option" class="option" value="1"><span class="answer">' + questions[currentQuestion].answers[1] + '</span><br><input type="radio" name="option" class="option" value="2"><span class="answer">' + questions[currentQuestion].answers[2] + '</span><br><input type="radio" name="option" class="option" value="3"><span class="answer">' + questions[currentQuestion].answers[3] + '</span><br></div><div id="button-wrapper"><input type="button" id="submit" value="Submit"><input type="button" id="retry" value="Try Again?></div>';
 
 //click function for submit button
 $("#question-wrapper").on("click", "#submit", function() {
 	currentQuestion++; 	//advance counter by 1
 	nextQuestion(); 	//fire function to present the next question
-})
+});
 
 //click function for retry button, reset variable and populate new question
 $("#question-wrapper").on("click", "#retry", function() {
 	numberCorrect = 0;
 	currentQuestion = 0;
-	var newQuestion = '<span class="question">' + questions[currentQuestion].question + '</span><br><div id="answer-wrapper"><input type="radio" name="option" class="option" value="0"><span class="answer">' + questions[currentQuestion].answers[0] + '</span><br><input type="radio" name="option" class="option" value="1"><span class="answer">' + questions[currentQuestion].answers[1] + '</span><br><input type="radio" name="option" class="option" value="2"><span class="answer">' + questions[currentQuestion].answers[2] + '</span><br><input type="radio" name="option" class="option" value="3"><span class="answer">' + questions[currentQuestion].answers[3] + '</span><br></div><div id="button-wrapper"><input type="button" id="submit" value="Submit"><input type="button" id="retry" value="Try Again?></div>';
 	$("#question-wrapper").html(newQuestion);
 });
 
@@ -54,31 +55,33 @@ function score() {
 	if(answer == questions[currentQuestion].correctAnswer) {
 		numberCorrect++;
 	}
-};
+}
 
 //function to present next question OR end the quiz and present score
 function nextQuestion() {
-	if(currentQuestion < 5){
+	if(currentQuestion < 5) {
 		$(".question").remove();
 		$("#answer-wrapper input").remove();
 		$("#answer-wrapper span").remove();
-		var newQuestion = '<span class="question">' + questions[currentQuestion].question + '</span><br><div id="answer-wrapper"><input type="radio" name="option" class="option" value="0"><span class="answer">' + questions[currentQuestion].answers[0] + '</span><br><input type="radio" name="option" class="option" value="1"><span class="answer">' + questions[currentQuestion].answers[1] + '</span><br><input type="radio" name="option" class="option" value="2"><span class="answer">' + questions[currentQuestion].answers[2] + '</span><br><input type="radio" name="option" class="option" value="3"><span class="answer">' + questions[currentQuestion].answers[3] + '</span><br></div><div id="button-wrapper"><input type="button" id="submit" value="Submit"><input type="button" id="retry" value="Try Again?></div>';
 		$("#question-wrapper").html(newQuestion);
 	}
 	else {
 		$(".question").remove();
 		$("#answer-wrapper input").remove();
 		$("#answer-wrapper span").remove();
+		$("#submit").css("display", "none");
+		$("#retry").css("display", "none");
 		if(numberCorrect == 1) {
-			var finalScore = '<span id="final"> Congratulations on finishing the quiz! You correctly answered' + numberCorrect + 'question.'
-			$("#answer-wrapper").html(finalScore);
+			var total = '<span id="final"> Congratulations on finishing the quiz! You correctly answered' + numberCorrect + 'question.'
+			$("#answer-wrapper").html(total);
 		}
 		else {
-			var finalScore = '<span id="final"> Congratulations on finishing the quiz! You correctly answered' + numberCorrect + 'questions.'
-			$("#answer-wrapper").html(finalScore);
+			var total = '<span id="final"> Congratulations on finishing the quiz! You correctly answered' + numberCorrect + 'questions.'
+			$("#answer-wrapper").html(total);
 		}
 	}
-};
+}
+
 
 
 
