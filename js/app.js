@@ -29,7 +29,7 @@ $(document).ready(function() {
 		questionNumber: 4,
 		correctAnswer: 3
 	}]
-};
+}
 
 //Time for some global variables
 var numberCorrect = 0;		//initialize counter for corect answers to 0
