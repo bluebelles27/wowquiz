@@ -56,7 +56,7 @@ function score() {
 	}
 };
 
-//function to present next question OR end the quiz
+//function to present next question OR end the quiz and present score
 function nextQuestion() {
 	if(currentQuestion < 5){
 		$(".question").remove();
