@@ -34,7 +34,9 @@ $(document).ready(function() {
 //Time for some global variables
 var numberCorrect = 0;		//initialize counter for corect answers to 0
 var currentQuestion = 0;	//initialize counter for question # to 0
-var newQuestion = '<span class="question">' + questions[currentQuestion].question + '</span><br><div id="answer-wrapper"><input type="radio" name="option" class="option" value="0"><span class="answer">' + questions[currentQuestion].answers[0] + '</span><br><input type="radio" name="option" class="option" value="1"><span class="answer">' + questions[currentQuestion].answers[1] + '</span><br><input type="radio" name="option" class="option" value="2"><span class="answer">' + questions[currentQuestion].answers[2] + '</span><br><input type="radio" name="option" class="option" value="3"><span class="answer">' + questions[currentQuestion].answers[3] + '</span><br></div>';
+function getQuestion () {
+	return '<span class="question">' + questions[currentQuestion].question + '</span><br><div id="answer-wrapper"><input type="radio" name="option" class="option" value="0"><span class="answer">' + questions[currentQuestion].answers[0] + '</span><br><input type="radio" name="option" class="option" value="1"><span class="answer">' + questions[currentQuestion].answers[1] + '</span><br><input type="radio" name="option" class="option" value="2"><span class="answer">' + questions[currentQuestion].answers[2] + '</span><br><input type="radio" name="option" class="option" value="3"><span class="answer">' + questions[currentQuestion].answers[3] + '</span><br></div>';
+}
 
 //click function for submit button
 $(document).on("click", "#submit", function() {
@@ -46,7 +48,7 @@ $(document).on("click", "#submit", function() {
 $(document).on("click", "#retry", function() {
 	numberCorrect = 0;
 	currentQuestion = 0;
-	$("#question-wrapper").html(newQuestion);
+	$("#question-wrapper").html(getQuestion());
 });
 
 //function to update score
@@ -60,10 +62,12 @@ function score() {
 //function to present next question OR end the quiz and present score
 function nextQuestion() {
 	if(currentQuestion < 5) {
+		score();
 		$(".question").remove();
 		$("#answer-wrapper input").remove();
 		$("#answer-wrapper span").remove();
-		$("#question-wrapper").html(newQuestion);
+		$("#question-wrapper").html(getQuestion());
+
 	}
 	else {
 		$(".question").remove();
@@ -82,11 +86,10 @@ function nextQuestion() {
 	}
 }
 
-
 function start() {
 	numberCorrect = 0;
 	currentQuestion = 0;
-	$("#question-wrapper").html(newQuestion);
+	$("#question-wrapper").html(getQuestion());
 }
 start();
 
