@@ -34,16 +34,16 @@ $(document).ready(function() {
 //Time for some global variables
 var numberCorrect = 0;		//initialize counter for corect answers to 0
 var currentQuestion = 0;	//initialize counter for question # to 0
-var newQuestion = '<span class="question">' + questions[currentQuestion].question + '</span><br><div id="answer-wrapper"><input type="radio" name="option" class="option" value="0"><span class="answer">' + questions[currentQuestion].answers[0] + '</span><br><input type="radio" name="option" class="option" value="1"><span class="answer">' + questions[currentQuestion].answers[1] + '</span><br><input type="radio" name="option" class="option" value="2"><span class="answer">' + questions[currentQuestion].answers[2] + '</span><br><input type="radio" name="option" class="option" value="3"><span class="answer">' + questions[currentQuestion].answers[3] + '</span><br></div><div id="button-wrapper"><input type="button" id="submit" value="Submit"><input type="button" id="retry" value="Try Again?></div>';
+var newQuestion = '<span class="question">' + questions[currentQuestion].question + '</span><br><div id="answer-wrapper"><input type="radio" name="option" class="option" value="0"><span class="answer">' + questions[currentQuestion].answers[0] + '</span><br><input type="radio" name="option" class="option" value="1"><span class="answer">' + questions[currentQuestion].answers[1] + '</span><br><input type="radio" name="option" class="option" value="2"><span class="answer">' + questions[currentQuestion].answers[2] + '</span><br><input type="radio" name="option" class="option" value="3"><span class="answer">' + questions[currentQuestion].answers[3] + '</span><br></div>';
 
 //click function for submit button
-$("#button-wrapper").on("click", "#submit", function() {
+$(document).on("click", "#submit", function() {
 	currentQuestion++; 	//advance counter by 1
 	nextQuestion(); 	//fire function to present the next question
 });
 
 //click function for retry button, reset variable and populate new question
-$("#button-wrapper").on("click", "#retry", function() {
+$(document).on("click", "#retry", function() {
 	numberCorrect = 0;
 	currentQuestion = 0;
 	$("#question-wrapper").html(newQuestion);
