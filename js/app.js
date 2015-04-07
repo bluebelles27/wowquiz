@@ -28,8 +28,8 @@ $(document).ready(function() {
 		answers: ["3", "6", "4", "5"],
 		questionNumber: 4,
 		correctAnswer: 3
-	}]
-}
+	}];
+
 
 //Time for some global variables
 var numberCorrect = 0;		//initialize counter for corect answers to 0
@@ -81,6 +81,7 @@ function nextQuestion() {
 		}
 	}
 }
+});
 
 
 
