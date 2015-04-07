@@ -28,8 +28,8 @@ $(document).ready(function() {
 		answers: ["3", "6", "4", "5"],
 		questionNumber: 4,
 		correctAnswer: 3
-	}]
-}
+	}];
+
 
 //Time for some global variables
 var numberCorrect = 0;		//initialize counter for corect answers to 0
@@ -37,13 +37,13 @@ var currentQuestion = 0;	//initialize counter for question # to 0
 var newQuestion = '<span class="question">' + questions[currentQuestion].question + '</span><br><div id="answer-wrapper"><input type="radio" name="option" class="option" value="0"><span class="answer">' + questions[currentQuestion].answers[0] + '</span><br><input type="radio" name="option" class="option" value="1"><span class="answer">' + questions[currentQuestion].answers[1] + '</span><br><input type="radio" name="option" class="option" value="2"><span class="answer">' + questions[currentQuestion].answers[2] + '</span><br><input type="radio" name="option" class="option" value="3"><span class="answer">' + questions[currentQuestion].answers[3] + '</span><br></div><div id="button-wrapper"><input type="button" id="submit" value="Submit"><input type="button" id="retry" value="Try Again?></div>';
 
 //click function for submit button
-$("#question-wrapper").on("click", "#submit", function() {
+$("#button-wrapper").on("click", "#submit", function() {
 	currentQuestion++; 	//advance counter by 1
 	nextQuestion(); 	//fire function to present the next question
 });
 
 //click function for retry button, reset variable and populate new question
-$("#question-wrapper").on("click", "#retry", function() {
+$("#button-wrapper").on("click", "#retry", function() {
 	numberCorrect = 0;
 	currentQuestion = 0;
 	$("#question-wrapper").html(newQuestion);
@@ -81,6 +81,17 @@ function nextQuestion() {
 		}
 	}
 }
+
+
+function start() {
+	numberCorrect = 0;
+	currentQuestion = 0;
+	$("#question-wrapper").html(newQuestion);
+}
+start();
+
+});
+
 
 
 
