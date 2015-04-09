@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	var questions = [{
 		question: "There are two factions in the World of Warcraft, the Alliance and the Horde. Which of the following races is NOT a member of the Horde?",
-		answers: ["Tauren -  a nomadic, peaceful, cow-like race", "Trolls - a tribal, mystical, and adaptive race that can be found all over Azeroth", "Worgen - a cursed race of humans who transform into nightmarish beasts", "Blood Eleves - a faction of High Elves that are so dependent on magic, they suffer withdrawal if it is taken away"],
+		answers: ["Tauren -  a nomadic, peaceful, cow-like race", "Trolls - a tribal, mystical, and adaptive race that can be found all over Azeroth", "Worgen - a cursed race of humans who transform into nightmarish beasts", "Blood Elves - a faction of High Elves that are so dependent on magic, they suffer withdrawal if it is taken away"],
 		questionNumber:0,
 		correctAnswer: 2
 	},
@@ -40,6 +40,7 @@ function getQuestion () {
 
 //click function for submit button
 $(document).on("click", "#submit", function() {
+	score();
 	currentQuestion++; 	//advance counter by 1
 	nextQuestion(); 	//fire function to present the next question
 });
@@ -54,15 +55,16 @@ $(document).on("click", "#retry", function() {
 //function to update score
 function score() {
 	var answer = $("input[type='radio']:checked").val();
+	console.log(questions[currentQuestion].correctAnswer);
 	if(answer == questions[currentQuestion].correctAnswer) {
 		numberCorrect++;
+		console.log(answer);
 	}
 }
 
 //function to present next question OR end the quiz and present score
 function nextQuestion() {
 	if(currentQuestion < 5) {
-		score();
 		$(".question").remove();
 		$("#answer-wrapper input").remove();
 		$("#answer-wrapper span").remove();
@@ -76,11 +78,11 @@ function nextQuestion() {
 		$("#submit").css("display", "none");
 		$("#retry").css("display", "none");
 		if(numberCorrect == 1) {
-			var total = '<span id="final"> Congratulations on finishing the quiz! You correctly answered' + numberCorrect + 'question.'
+			var total = '<span id="final"> Congratulations on finishing the quiz! You correctly answered ' + numberCorrect + ' question.'
 			$("#answer-wrapper").html(total);
 		}
 		else {
-			var total = '<span id="final"> Congratulations on finishing the quiz! You correctly answered' + numberCorrect + 'questions.'
+			var total = '<span id="final"> Congratulations on finishing the quiz! You correctly answered ' + numberCorrect + ' questions.'
 			$("#answer-wrapper").html(total);
 		}
 	}
